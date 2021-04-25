@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from vgg16.herokuapp.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 24 Apr 2021 07:14:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="UTF-8">
+    <title>defectoscopy</title>
+      <link rel="stylesheet" href="static/style.css">
+
+
+</head>
+
+<style>
+    @import url('http://fonts.googleapis.com/css?family=Open+Sans:400,300');
+
+    * { margin: 0; padding: 0; }
+
+    body {
+
+        background-image: url('https://i.ibb.co/g9K3P5C/Copy-of-Copy-of-pptx.png');
+
+      /* Full height */
+          height: 100%; 
+
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+            text-align: center;
+            color: #ffffff; 
+    }
+
+    h1 span { color: #000000; font-weight: 400; }
+
+    h2 span { color: #ff5500; font-weight: 400; }
+
+    #a input {
+        background-color: #b3e6ff;
+        border: none;
+        color: #000000;
+        padding: 13px 14px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 60px;
+    }
+
+    #b input {
+        background-color: #84e184;
+        border: none;
+        color: #000000;
+        padding: 13px 70px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 60px;
+    }
+
+    #output img.center {
+        display: block;
+        margin: 0 auto;
+      position: relative;
+        left: -50%;
+    }
+
+    p span { color: #4d4d4d; font-weight: 400; }
+
+
+    .button {
+    background-color: #010174; /* Green */
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px 2px;
+    cursor: pointer;
+
+    } 
+    .button5 {border-radius: 12px;}
+
+</style>
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>  -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
+
+<script>var x1, y1;
+
+$(document).ready(function() { $("img").on("click", function(event) { var x = event.pageX - this.offsetLeft; var y = event.pageY - this.offsetTop; x1=x; y1=y; alert("X Coordinate: " + x + " Y Coordinate: " + y); }); });
+</script>
+
+<script>
+    fetch('/add_defect', {
+
+    // Declare what type of data we're sending
+    headers: {
+      'Content-Type': 'application/json'
+    },
+
+    // Specify the method
+    method: 'POST',
+
+    // A JSON payload
+    body: JSON.stringify({
+        { "x": x, " y": y}
+    }).then(function (response) { // At this point, Flask has printed our JSON
+    return response.text();
+}).then(function (text) {
+
+    console.log('POST response: ');
+
+    // Should be 'OK' if everything was successful
+    console.log(text);
+});
+</script>
+<body>
+
+<center>
+ <a target="_self" href="/add_defect" class='a_'>
+    <button type="button" class="button button5">Добавить дефект</button>
+  </a>
+</center>
+    
+<h1><span>Дефектоскопия</span></h1>
+<!--     <form action="/" method = "POST" class="indexstyle__FormCSS-pehus4-0 bSYnzF cc_cursor">
+ --><!--     <input type = "text" name = "URL" placeholder="Enter brand name or type a URL" value="">
+ --><!--     <button type="submit" class="Button__ButtonCSS-sc-99gmth-0 gAcjAm search cc_pointer">
+ --><!--         <i class="far fa-search"></i>
+ --><!--     </button>
+ --><!-- </form>
+ -->        
+    
+    <form method=POST  enctype=multipart/form-data action="/add_defect  ">
+        <div id =aa  , style="margin-top:5px;">
+        <input type=text name="label" placeholder='Название дефекта'>
+        </div>
+
+        <div id =asd  , style="margin-top:5px;">
+                <input type=text name="cords" placeholder='кординаты x,y'>
+        </div>
+
+        <div style ="margin-top:15px;">
+            <p>
+                <h4><span style="color:black"> Загрузить файл </span></h4>
+            </p>
+        </div>
+    
+        <div id = a , style="margin-top:45px;">
+                <input type=file name=photo accept="image/*" onchange="loadFile(event)">
+                <center>
+                    <img id="output" align = middle STYLE="TOP:260px;WIDTH:350px; HEIGHT:350px"/>
+                </center>
+        <script>
+            var loadFile = function(event) {
+            var output = document.getElementById('output');
+            output.src = URL.createObjectURL(event.target.files[0]);
+            };
+        </script>       
+
+            </div>
+
+
+
+        <div id = b , style="margin-top:45px;">
+                <input type="submit">
+        </div>
+
+</form>
+</body>
+
+</html>
+
+
+<!-- <!doctype html>
+<title>Python Flask Multiple Files Upload Example</title>
+<h2>Select file(s) to upload</h2>
+<p>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul class=flashes>
+{% for message in messages %}
+<li>{{ message }}</li>
+{% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+</p>
+<form method="post" action="/" enctype="multipart/form-data">
+<dl>
+<p>
+<input type="file" name="files[]" multiple="true" autocomplete="off" required>
+</p>
+</dl>
+<p>
+<input type="submit" value="Submit">
+</p>
+</form> -->

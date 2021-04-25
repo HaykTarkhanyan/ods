@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from vgg16.herokuapp.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 24 Apr 2021 07:14:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="UTF-8">
+    <title>defectoscopy</title>
+      <link rel="stylesheet" href="static/style.css">
+
+
+</head>
+
+<style>
+    @import url('http://fonts.googleapis.com/css?family=Open+Sans:400,300');
+
+    * { margin: 0; padding: 0; }
+
+    body {
+
+        /*background-image: url('https://i.ibb.co/g9K3P5C/Copy-of-Copy-of-pptx.png');*/
+
+      /* Full height */
+          height: 100%; 
+
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+            text-align: center;
+            /*color: #ffffff; */
+    }
+
+    h1 span { color: #000000; font-weight: 400; }
+
+    h2 span { color: #ff5500; font-weight: 400; }
+
+    #a input {
+        background-color: #b3e6ff;
+        border: none;
+        color: #000000;
+        padding: 13px 14px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 60px;
+    }
+
+    #b input {
+        background-color: #84e184;
+        border: none;
+        color: #000000;
+        padding: 13px 70px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 60px;
+    }
+
+    #output img.center {
+        display: block;
+        margin: 0 auto;
+      position: relative;
+        left: -50%;
+    }
+
+    p span { color: #4d4d4d; font-weight: 400; }
+
+</style>
+<body>
+    {{image_path}}
+    {{image_path_bbox}}
+    <center>
+        <h1>treshnina - <b>0.9</b></h1>
+        
+        <p><treshina/p>
+        <img src='{{image_path_bbox}}' id="output" align = middle STYLE="TOP:260px;WIDTH:50px; HEIGHT:350px"/>
+        <p>laplace</p>
+        <img src='{{im_laplace}}' id="output" align = middle STYLE="TOP:260px;WIDTH:350px; HEIGHT:50px"/>
+        <p>close</p>
+        <img src='{{defect_close_path}}' id="output" align = middle STYLE="TOP:260px;WIDTH:50px; HEIGHT:350px"/>
+        
+    </center>
+</body>
+
+</html>
